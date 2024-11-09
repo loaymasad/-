@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=3 uid="uid://cxts5jrcfwyi1"]
+
+[ext_resource type="Texture2D" uid="uid://br32eebn6f51t" path="res://assets/School Daze/Stage 1/Maps/School Back/Classroom/_Idle.png" id="1_ha4q0"]
+
+[sub_resource type="GDScript" id="GDScript_fnb8c"]
+script/source = "
+extends CharacterBody2D  # This node is optimized for top-down movement in Godot 4.
+
+@export var move_speed: float = 150.0
+
+func _process(delta):
+	var input_vector = Vector2.ZERO
+	if Input.is_action_pressed(\"ui_right\"):
+		input_vector.x += 1
+	if Input.is_action_pressed(\"ui_left\"):
+		input_vector.x -= 1
+	if Input.is_action_pressed(\"ui_down\"):
+		input_vector.y += 1
+	if Input.is_action_pressed(\"ui_up\"):
+		input_vector.y -= 1
+
+	input_vector = input_vector.normalized()
+	velocity = input_vector * move_speed
+	move_and_slide()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4munn"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gg2x"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ddq5"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrnbc"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kdtt"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1s0e"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15sge"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvy44"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3im8f"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7umb"]
+atlas = ExtResource("1_ha4q0")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q6lma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4munn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gg2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ddq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrnbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kdtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1s0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15sge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvy44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3im8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7umb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgnit"]
+radius = 6.0
+height = 20.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = SubResource("GDScript_fnb8c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(5, -23)
+sprite_frames = SubResource("SpriteFrames_q6lma")
+frame_progress = 0.243103
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_jgnit")

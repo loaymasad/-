@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccsg2g4gwolgk"]
+
+[ext_resource type="PackedScene" uid="uid://drqqhxd361267" path="res://parallax_background.tscn" id="1_vsg2e"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 233.0
+offset_top = 107.0
+offset_right = 982.0
+offset_bottom = 453.0
+theme_override_font_sizes/font_size = 65
+text = "ابدأ اللعب"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+offset_left = 459.0
+offset_top = 165.0
+offset_right = 778.0
+offset_bottom = 321.0
+flat = true
+icon_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+offset_left = 246.0
+offset_top = 236.0
+offset_right = 995.0
+offset_bottom = 582.0
+theme_override_font_sizes/font_size = 55
+text = "الاعدادات"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 501.0
+offset_top = 340.0
+offset_right = 733.0
+offset_bottom = 478.0
+flat = true
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_vsg2e")]
+
+[connection signal="pressed" from="Button" to="ParallaxBackground" method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="ParallaxBackground" method="_on_button_2_pressed"]
